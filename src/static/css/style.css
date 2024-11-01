@@ -1,36 +1,50 @@
 body {
 
     color: aqua;
-    margin: auto;
+    padding-top: 120px;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%)
+
 }
 
-.card {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+/* Réduire la taille des marges pour éviter le débordement */
+.navbar {
+    margin: 0;
+    padding: 0;
 }
 
-.card-img-top {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+.container {
+    max-width: 1140px; /* Ajuste la largeur max du conteneur si nécessaire */
 }
 
-.card-body {
-  padding: 0;
+.navbar-nav {
+    flex-direction: row; /* S'assure que les éléments sont bien alignés horizontalement */
+}
+
+.nav-item {
+    margin-left: 15px; /* Ajuste l'espacement entre les éléments de la navbar */
+}
+
+/* Empêche le débordement de la navbar */
+body {
+    overflow-x: hidden;
+}
+
+/* Éventuellement pour les petits écrans */
+@media (max-width: 768px) {
+    .navbar-nav {
+        margin-top: 10px; /* Ajoute de l'espacement entre le menu et le bouton */
+    }
 }
 
 .masthead {
-  position: relative;
-  width: 100%;
-  height: auto;
-  min-height: 35rem;
-  padding: 15rem 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("static/img/bg-masthead.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size: cover;
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 35rem;
+    padding: 15rem 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("static/img/bg-masthead.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
 }

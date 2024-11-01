@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -32,7 +31,8 @@ class Migration(migrations.Migration):
                 ('published', models.BooleanField(default=False)),
                 ('published_date', models.DateField()),
                 ('image', models.ImageField(upload_to='articles/')),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to=settings.AUTH_USER_MODEL)),
+                ('author',
+                 models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to=settings.AUTH_USER_MODEL)),
                 ('category', models.ManyToManyField(to='articles.category')),
             ],
         ),
