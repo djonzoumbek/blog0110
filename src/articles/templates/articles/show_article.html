@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ article.title }}
+{% endblock %}
+
+{% block content %}
+    <div class="d-block justify-content-between align-items-center pt-3">
+        <p><a href="{% url 'articles:list-articles' %}">Go Back</a></p>
+        <h1 class="align-items-center">{{ article.title }}</h1>
+        <p>{{ article.description }}</p>
+        <img src="{{ article.image.url }}" alt="{{ article.title }}">
+        <span>{{ article.author }}</span>
+        <span>{{ article.nb_likes }}</span>
+        <span>{{ article.nb_dislikes }}</span>
+    </div>
+
+    {% comment %}<form action="{% url 'articles:like_article' article.pk %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Like</button>
+            </form>
+        {% endcomment %}
+
+{% endblock %}
