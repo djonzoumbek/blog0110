@@ -1,7 +1,5 @@
-from django.http import HttpResponse
-from django.shortcuts import render, redirect
 from django.contrib import messages
-
+from django.shortcuts import render, redirect, get_object_or_404
 
 from articles.forms import ArticleForm, CategoryForm
 from articles.models import Article
@@ -27,6 +25,7 @@ def add_article(request):
 
     return render(request, 'articles/add_articles.html', {"form": form})
 
+
 def add_category(request):
     if request.method == "POST":
         form = CategoryForm(request.POST)
@@ -36,6 +35,7 @@ def add_category(request):
     else:
         form = CategoryForm()
         return render(request, 'articles/add_articles.html', {"form": form})
+
 
 def edit_article(request, pk):
     article = Article.objects.get(pk=pk)
@@ -49,15 +49,19 @@ def edit_article(request, pk):
         form = ArticleForm(instance=article)
         return render(request, 'articles/add_articles.html', {"form": form})
 
+
+
 def del_article(request, pk):
-    article = Article.objects.get(pk=pk)
+    article = get_object_or_404(Article, pk=pk)
     article.delete()
-    return redirect("articles:home")
+    return redirect("articles:list-articles")
+
 
 def articles(request):
     articles = Article.objects.all()
     context = {"articles": articles}
     return render(request, 'articles/articles_list.html', context)
+
 
 def show_article(request, pk):
     article = Article.objects.get(pk=pk)
@@ -68,6 +72,3 @@ def show_article(request, pk):
 #     article = Article.objects.get(pk=pk)
 #     article.add_like()
 #     return redirect('articles:show_article', article.pk)
-
-
-

@@ -6,11 +6,49 @@
 
 {% block content %}
 
-    <h1>Add Articles</h1>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit">
 
-    </form>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-7"> <!-- Réduit la largeur à 50% de l'écran -->
+                <h2 class="text-center mb-4">Ajouter un Article</h2>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.media }}
+
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Titre de l'article</label>
+                        {{ form.title }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        {{ form.description }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Catégories</label>
+                        {{ form.category }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="tags" class="form-label">Tags</label>
+                        {{ form.tags }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="author" class="form-label">Auteur</label>
+                        {{ form.author }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Image de couverture</label>
+                        {{ form.image }}
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">Publier l'article</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
